@@ -3,7 +3,6 @@ const tabs = document.querySelectorAll('.tab');
  const tabContent = document.querySelectorAll('.tab__content');
  const arrTabs = Array.from(tabs);
 
-
  tabs.forEach(tab => {
     tab.addEventListener('click', (e) => {
         const target = e.target;
