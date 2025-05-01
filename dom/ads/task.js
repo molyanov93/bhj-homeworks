@@ -1,12 +1,20 @@
-let rotatorCases = document.querySelectorAll('.rotator__case');
+let rotatorElements = document.querySelectorAll('.rotator__case');
+let firstElem = document.querySelector('.rotator').firstElementChild;
+let nextElem;
 
-    rotatorCases.forEach(el => {
-        console.log(el.getAttribute('data-speed'));
-        setInterval(() => {
-            el.classList.toggle('rotator__case_active');
-        }, el.getAttribute('data-speed'))
-    })
-    
- 
+let rotatorElemActive = document.querySelector('.rotator__case_active');
 
+setInterval(() => {
+	rotatorElemActive.classList.remove('rotator__case_active');
 
+	if (rotatorElemActive.nextElementSibling) {
+		nextElem = rotatorElemActive.nextElementSibling;
+
+		rotatorElemActive.classList.remove('rotator__case_active');
+		rotatorElemActive = nextElem;
+		rotatorElemActive.classList.add('rotator__case_active');
+	} else {
+		rotatorElemActive = firstElem;
+		rotatorElemActive.classList.add('rotator__case_active');
+	}
+}, 1000);
